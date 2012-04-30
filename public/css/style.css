@@ -1,0 +1,12 @@
+body {
+    padding-top: 40px;
+}
+
+.navbar img {
+    height: 18px;
+    width: 18px;
+}
+
+#timeline {
+    height: 500px;
+}
