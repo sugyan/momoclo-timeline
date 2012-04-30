@@ -7,6 +7,43 @@ body {
     width: 18px;
 }
 
-#timeline {
-    height: 500px;
+#timeline.top {
+    height: 550px;
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+footer {
+    margin: 15px 0;
+    height: 40px;
+}
+
+#aboutdate {
+    display: none;
+}
+
+/* timeglider */
+
+.tg-timeline-env-buttons {
+    display: none;
+}
+
+.full_modal_panel {
+    height: 450px;
+}
+
+.timeglider-timeline-event.episode .timeglider-event-title {
+    color: darkred;
+}
+.timeglider-timeline-event.episode.tg-event-hovered .timeglider-event-title {
+    color: red;
+}
+
+/* timeline */
+
+.timeline-event-bubble-image {
+    width: 80px;
+    height: 80px;
 }

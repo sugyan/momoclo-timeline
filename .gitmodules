@@ -1,0 +1,6 @@
+[submodule "deps/Timeline"]
+	path = deps/Timeline
+	url = git://github.com/VeriteCo/Timeline.git
+[submodule "deps/timeglider"]
+	path = deps/timeglider
+	url = git://github.com/timeglider/jquery_widget.git

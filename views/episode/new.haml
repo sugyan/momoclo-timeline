@@ -1,0 +1,51 @@
+- locals[:jss] = ['/js/new.js']
+.container
+  %h1 新規投稿
+  %form.well.form-horizontal{:method => 'POST'}
+    != Rack::Csrf.tag(env)
+    %legend あなたのエピソードを教えて下さい
+    .control-group{:class => errors[:type] && errors[:type][0] && 'error'}
+      %label.control-label 種別
+      .controls
+        %select#type{:name => 'type'}
+          %option
+          - EpisodeType.order(:id.desc).each do |type|
+            %option{:value => type.id, :selected => (params['type'] == type.id.to_s)}= type.name
+    .control-group{:class => errors[:startdate] && errors[:startdate][0] && 'error'}
+      %label.control-label 時期
+      .controls
+        #accordion
+          .accordion-group
+            - checked = (params['datetype'] == '0')
+            .accordion-heading
+              .accordion-toggle{:'data-parent' => '#accordion'}
+                %label.radio
+                  %input{:type => 'radio', :name => 'datetype', :value => '0', :checked => checked} ライブ/イベント
+            .accordion-body.collapse{:class => checked && 'in'}
+              .accordion-inner
+                %select.input-xxlarge{:name => 'startdate0'}
+                  - OfficialEvent.filter{ enddate != nil }.order(:startdate.desc).each do |event|
+                    %option{:value => event.startdate, :selected => (params['startdate0'] == event.startdate.to_s)} #{ event.startdate }: #{ event.name }
+          .accordion-group
+            - checked = (params['datetype'] == '1')
+            .accordion-heading
+              .accordion-toggle{:'data-parent' => '#accordion'}
+                %label.radio
+                  %input{:type => 'radio', :name => 'datetype', :value => '1', :checked => checked} その他
+            .accordion-body.collapse{:class => checked && 'in'}
+              .accordion-inner
+                %select.input-medium{:name => 'startdate1'}
+                  - today = Date.today
+                  - 2012.downto(2008).each do |year|
+                    - 12.downto(1).each do |month|
+                      - next if year >= today.year && month > today.month || year == 2008 && month < 5
+                      - valuestr = sprintf('%04d-%02d-01', year, month)
+                      %option{:value => valuestr, :selected => (params['startdate1'] == valuestr)}= sprintf('%04d年 %02d月', year, month)
+    .control-group{:class => errors[:text] && errors[:text][0] && 'error'}
+      %label.control-label{:for => 'textarea'} 自由記述
+      .controls
+        %textarea#textarea.input-xxlarge{:rows => '5', :name => 'text', :placeholder => '400字まで(仮)'}= params['text']
+        %br
+        %span#char-count.muted 0 / 400
+    .form-actions
+      %button.btn.btn-primary{:type => 'submit'} 投稿する

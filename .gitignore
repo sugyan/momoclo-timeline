@@ -1,0 +1,5 @@
+.rbenv-version
+.env
+.bundle/
+bin/
+vendor/

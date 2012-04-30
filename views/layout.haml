@@ -2,30 +2,41 @@
 %html
   %head
     %meta{:charset => 'UTF-8'}
-    %title title
+    %title momoclo timeline
     %link{:rel => 'stylesheet/less', :href => '/lib/bootstrap/less/bootstrap.less'}
     %script{:type => 'text/javascript', :src => '/lib/less/less-1.3.0.min.js'}
     %script{:type => 'text/javascript', :src => '/lib/jquery/jquery-1.7.2.min.js'}
     %script{:type => 'text/javascript', :src => '/lib/bootstrap/js/bootstrap-dropdown.js'}
+    %script{:type => 'text/javascript', :src => '/lib/bootstrap/js/bootstrap-collapse.js'}
     - (locals[:jss] || []).each do |js|
       %script{:type => 'text/javascript', :src => js}
+    - (locals[:csss] || []).each do |css|
+      %link{:rel => 'stylesheet', :type => 'text/css', :href => css}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/css/style.css'}
   %body
     %div.navbar.navbar-fixed-top
       %div.navbar-inner
         %div.container
-          %a.brand{:href => '/'} タイトル未定
+          %a.brand{:href => '/'} ももクロ的な何か
+          %ul.nav
+            %li
+              %a{:href => '/episode/new'} 新規投稿
           %ul.nav.pull-right
             - if session[:user]
               %li.dropdown
                 %a.dropdown-toggle{:'data-toggle' => 'dropdown'}
-                  %img{:src => session[:user][:info][:image]}
-                  = session[:user][:info][:nickname]
+                  %img{:src => session[:user].image}
+                  = session[:user].screen_name
                   %b.caret
                 %ul.dropdown-menu
                   %li
                     %a{:href => '/logout'} ログアウト
             - else
               %li
-                %a{:href => '/login'} Twitterでログイン
+                %a{:href => '/auth/twitter'} Twitterでログイン
     != yield
+    %div.container
+      %footer
+        %div.pull-right
+          %span> created by @
+          %a{:href => 'https://twitter.com/#!/sugyan', :target => '_blank'} sugyan

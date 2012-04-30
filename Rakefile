@@ -1,3 +1,6 @@
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
 namespace :db do
     require 'sequel'
     Sequel.extension :migration
