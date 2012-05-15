@@ -8,10 +8,7 @@ gem 'omniauth-twitter', '>=0.0.11'
 gem 'sequel',           '>=3.35.0'
 gem 'pg',               '>=0.13.2'
 gem 'rack_csrf',        '>=2.4.0'
-
-group :test do
-  gem 'rspec', '>=2.10.0'
-end
+gem 'rspec',            '>=2.10.0'
 
 group :development do
   gem 'nokogiri', '>=1.5.2'
