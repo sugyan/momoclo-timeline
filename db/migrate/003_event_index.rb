@@ -1,7 +1,7 @@
 Sequel.migration do
  up do
     alter_table(:official_events) do
-      drop_index :startdate
+      drop_index :date
     end
   end
 
