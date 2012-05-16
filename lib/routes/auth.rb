@@ -3,9 +3,6 @@ require 'omniauth-twitter'
 
 class App < Sinatra::Base
   configure do
-    enable :sessions
-    set :session_secret, ENV['SESSION_SECRET']
-
     use OmniAuth::Builder do
       provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
     end

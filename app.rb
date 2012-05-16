@@ -5,6 +5,8 @@ require 'haml'
 class App < Sinatra::Base
   configure do
     enable :logging
+    enable :sessions
+    set :session_secret, ENV['SESSION_SECRET']
     set :haml, :escape_html => true
     use Rack::Csrf, :raise => true
   end

@@ -30,7 +30,20 @@ class App < Sinatra::Base
     if e = Episode[params[:id]]
       haml :'episode/index', :locals => { :episode => e }
     else
-      not_found
+      not_found 'Not Found'
+    end
+  end
+
+  post '/episode/:id/delete' do
+    if e = Episode[params[:id]]
+      if session[:user] && session[:user][:id] == e.user_id
+        logger.info 'delete: ' + e.delete.id.to_s
+        redirect '/'
+      else
+        error 400, 'Bad Request'
+      end
+    else
+      not_found 'Not Found'
     end
   end
 end
