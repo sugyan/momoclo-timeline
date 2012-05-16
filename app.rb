@@ -16,6 +16,10 @@ class App < Sinatra::Base
   get '/timeline' do
     haml :timeline
   end
+
+  get '/about' do
+    haml :about
+  end
 end
 
 require_relative './lib/model'
