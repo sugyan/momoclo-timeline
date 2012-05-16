@@ -11,5 +11,6 @@ gem 'rack_csrf',        '>=2.4.0'
 gem 'rspec',            '>=2.10.0'
 
 group :development do
-  gem 'nokogiri', '>=1.5.2'
+  gem 'nokogiri',      '>=1.5.2'
+  gem 'activesupport', '>=3.2.3'
 end
