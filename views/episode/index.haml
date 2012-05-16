@@ -3,12 +3,12 @@
   %dl.dl-horizontal
     %dt 投稿者
     %dd
-      %img{:src => episode.user.image, :style => 'height:16px;width:16px;'}
-      %span @#{ episode.user.screen_name } (#{ episode.user.name })
+      %img{:src => episode.user.image, :style => "height:16px;width:16px;"}
+      %span.screen_name @#{ episode.user.screen_name }
     %dt 種別
     %dd= EpisodeType[episode.type].name
     %dt 時期
-    %dd= episode.enddate ? [episode.startdate, episode.enddate].join(' - ') : episode.startdate
+    %dd= episode.enddate ? [episode.startdate, episode.enddate].join(" - ") : episode.startdate
     %dt 内容
     %dd
       %pre= episode.text
