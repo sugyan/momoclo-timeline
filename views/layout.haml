@@ -14,9 +14,9 @@
       %link{:rel => 'stylesheet', :type => 'text/css', :href => css}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/css/style.css'}
   %body
-    %div.navbar.navbar-fixed-top
-      %div.navbar-inner
-        %div.container
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
           %a.brand{:href => '/'} ももクロ的な何か
           %ul.nav
             %li
@@ -35,8 +35,8 @@
               %li
                 %a{:href => '/auth/twitter'} Twitterでログイン
     != yield
-    %div.container
+    .container
       %footer
-        %div.pull-right
+        .pull-right
           %span> created by @
           %a{:href => 'https://twitter.com/#!/sugyan', :target => '_blank'} sugyan
