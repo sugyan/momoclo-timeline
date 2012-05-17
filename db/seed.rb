@@ -3,12 +3,13 @@
 require 'sequel'
 require 'json'
 
-
 db = Sequel.connect(ENV['SHARED_DATABASE_URL'])
 db[:official_events].delete
-# tour schedule from json
-data = JSON.load(File.read(File.dirname(__FILE__) + '/../data/tourschedule.json'))
-db[:official_events].insert_multiple(data)
+# data from json
+Dir::glob(File.dirname(__FILE__) + '/../data/*.json').each do |file|
+  data = JSON.load(File.read(file))
+  db[:official_events].insert_multiple(data)
+end
 # fixed data
 db[:official_events].insert_multiple([{
       :id          => 0,
