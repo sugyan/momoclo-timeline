@@ -7,10 +7,7 @@ require 'active_support/core_ext/array/grouping'
 
 year = nil
 results = []
-irregular = { 34646 => 'Ⅲ' }
-
-html = open('http://www.momoclo.net/profile/profile.html', 'r:Shift_JIS').read
-doc = Nokogiri::HTML(html.split(//).map{|c| irregular[c.ord] || c.encode('UTF-8')}.join(''))
+doc = Nokogiri::HTML(open('http://www.momoclo.net/profile/profile.html'), nil, 'CP932')
 doc.css('img[src="img/profile_live.jpg"]')[0].next.next.children.to_a.split do |e|
   e.name == 'img'
 end[0].split do |e|
