@@ -9,6 +9,7 @@
     %script{:type => "text/javascript", :src => "/lib/jquery/jquery-1.7.2.min.js"}
     %script{:type => "text/javascript", :src => "/lib/bootstrap/js/bootstrap-dropdown.js"}
     %script{:type => "text/javascript", :src => "/lib/bootstrap/js/bootstrap-collapse.js"}
+    %script{:type => "text/javascript", :src => "/lib/bootstrap/js/bootstrap-tooltip.js"}
     %script{:type => "text/javascript", :src => "/js/main.js"}
     - (locals[:jss] || []).each do |js|
       %script{:type => "text/javascript", :src => js}
@@ -24,6 +25,8 @@
             %li
               %a{:href => "/episode/new"} 新規投稿
           %ul.nav.pull-right
+            %li
+              %a{:href => "/events"} events
             %li
               %a{:href => "/about"} about
             - if session[:user]

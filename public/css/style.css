@@ -24,6 +24,10 @@ footer {
     display: none;
 }
 
+table#events td.eventdate {
+    font-weight: bold;
+}
+
 /* timeglider */
 
 .tg-timeline-env-buttons {
@@ -39,11 +43,4 @@ footer {
 }
 .timeglider-timeline-event.episode.tg-event-hovered .timeglider-event-title {
     color: red;
-}
-
-/* timeline */
-
-.timeline-event-bubble-image {
-    width: 80px;
-    height: 80px;
 }
