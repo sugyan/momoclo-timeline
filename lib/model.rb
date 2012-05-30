@@ -2,7 +2,7 @@ require 'sequel'
 
 Sequel.connect(ENV['SHARED_DATABASE_URL'])
 
-class OfficialEvent < Sequel::Model
+class Event < Sequel::Model
 end
 
 class EpisodeType < Sequel::Model

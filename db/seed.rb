@@ -4,14 +4,14 @@ require 'sequel'
 require 'json'
 
 db = Sequel.connect(ENV['SHARED_DATABASE_URL'])
-db[:official_events].delete
+db[:events].delete
 # data from json
 Dir::glob(File.dirname(__FILE__) + '/../data/*.json').each do |file|
   data = JSON.load(File.read(file))
-  db[:official_events].insert_multiple(data)
+  db[:events].insert_multiple(data)
 end
 # fixed data
-db[:official_events].insert_multiple([{
+db[:events].insert_multiple([{
       :id          => 0,
       :name        => 'ももいろクローバー 結成',
       :startdate   => Date.new(2008, 5, 17),

@@ -17,7 +17,7 @@ class App < Sinatra::Base
         :timezone     => '09:00',
         :focus_date   => Date.today(),
         :initial_zoom => 27,
-        :events       => [].concat(OfficialEvent.filter{ importance >= 30 }.order(:startdate).each_with_index.map{|event, idx|
+        :events       => [].concat(Event.filter{ importance >= 30 }.order(:startdate).each_with_index.map{|event, idx|
             hash = event.values.clone
             hash[:id]    = 'event:' + hash[:id].to_s
             hash[:title] = hash.delete(:name)
@@ -47,7 +47,7 @@ class App < Sinatra::Base
   get '/api/timeline.json' do
     json :timeline => {
       :type => 'default',
-      :date => OfficialEvent.filter{ importance >= 30 }.order(:startdate).map do |event|
+      :date => Event.filter{ importance >= 30 }.order(:startdate).map do |event|
         ret = {
           :startDate => event.startdate.strftime('%Y,%-m,%-d'),
           :endDate   => event.enddate ? event.enddate.strftime('%Y,%-m,%-d') : nil,

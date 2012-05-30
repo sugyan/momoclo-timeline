@@ -24,7 +24,7 @@
             .accordion-body.collapse{:class => checked && "in"}
               .accordion-inner
                 %select.input-xxlarge{:name => "startdate0"}
-                  - OfficialEvent.filter{ enddate != nil }.order(:startdate.desc).each do |event|
+                  - Event.filter{ enddate != nil }.order(:startdate.desc).each do |event|
                     %option{:value => event.startdate, :selected => (params["startdate0"] == event.startdate.to_s)} #{ event.startdate }: #{ event.name }
           .accordion-group
             - checked = (params["datetype"] == "1")
