@@ -27,4 +27,5 @@ end
 require_relative './lib/model'
 require_relative './lib/routes/api'
 require_relative './lib/routes/auth'
+require_relative './lib/routes/events'
 require_relative './lib/routes/episode'

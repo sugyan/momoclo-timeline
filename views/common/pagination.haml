@@ -1,0 +1,16 @@
+.pagination.pagination-centered
+  %ul
+    - if dataset.current_page > 1
+      %li
+        %a{:href => "?page=#{ dataset.current_page - 1 }"} «
+    - ([dataset.current_page - 3, 1].max).upto(dataset.current_page - 1).each do |page|
+      %li
+        %a{:href => "?page=#{ page }"}= page
+    %li.active
+      %a= dataset.current_page
+    - (dataset.current_page + 1).upto([dataset.current_page + 3, dataset.page_count].min).each do |page|
+      %li
+        %a{:href => "?page=#{ page }"}= page
+    - if dataset.current_page < dataset.page_count
+      %li
+        %a{:href => "?page=#{ dataset.current_page + 1 }"} »

@@ -1,0 +1,12 @@
+.container
+  %h1 ライブ・イベント 一覧
+  %table.table.table-striped
+    - dataset.each do |event|
+      %tr
+        %td.span2<
+          = event.startdate.strftime('%Y年%m月%d日')
+          - if event.enddate
+            %br
+            = '〜' + event.enddate.strftime('%Y年%m月%d日')
+        %td= event.name
+  != haml :'common/pagination', :locals => locals

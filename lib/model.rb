@@ -1,6 +1,7 @@
 require 'sequel'
 
 Sequel.connect(ENV['SHARED_DATABASE_URL'])
+Sequel.extension(:pagination)
 
 class Event < Sequel::Model
 end
